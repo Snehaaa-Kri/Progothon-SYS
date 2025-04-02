@@ -20,7 +20,7 @@ Grevion is a web platform designed to connect Single Points of Contact (SPOCs) a
 ## Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/grevion.git
+   git clone https://github.com/Snehaaa-Kri/Progothon-SYS.git
    ```
 2. Navigate to the project directory:
    ```sh
