@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
+import connectDB from "./config/db.js"; 
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ app.get("/",(req,res)=>{
   res.send("SERVER RUNNING...")
 })
 
-
+connectDB();
 
 
 const PORT = process.env.PORT || 3000;
