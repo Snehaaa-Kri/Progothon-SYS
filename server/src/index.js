@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv"
-import cookieParser from "cookie-parser"
 import connectDB from "./config/db.js"; 
-
+import {userRouter, spocRouter, PowerPlantRouter} from "./routes/index.js"
+import cookieParser from "cookie-parser"
+import {completeProfileRouter} from "./routes/index.js"
 dotenv.config();
 
 const app = express();
@@ -15,13 +16,19 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+connectDB();
 
 app.get("/",(req,res)=>{
   res.send("SERVER RUNNING...")
 })
 
-connectDB();
+app.use("/api/v1/auth",userRouter);
+app.use("/api/v1/spoc", spocRouter);
+// complete profile routes
+app.use("/api/v1/users" , completeProfileRouter)
+app.use("/api/v1/powerplant", PowerPlantRouter)
 
 
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
